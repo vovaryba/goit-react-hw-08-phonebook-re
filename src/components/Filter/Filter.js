@@ -9,15 +9,17 @@ const Filter = () => {
   const onChange = e => dispatch(phonebookActions.changeFilter(e.target.value));
 
   return (
-    <label>
-      Find contacts by name
-      <input
-        className={s.input}
-        type="text"
-        value={value}
-        onChange={onChange}
-      ></input>
-    </label>
+    <div className={s.container}>
+      <label className={s.label}>
+        Find contacts by name
+        <input
+          className={s.input}
+          type="text"
+          value={value}
+          onChange={onChange}
+        ></input>
+      </label>
+    </div>
   );
 };
 

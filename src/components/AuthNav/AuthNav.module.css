@@ -1,0 +1,18 @@
+.authNav {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.link {
+  padding: 12px;
+  font-weight: 600;
+  color: #000000;
+  margin-right: 10px;
+  text-decoration: none;
+  outline: none;
+}
+
+.activated {
+  composes: link;
+  color: red;
+}

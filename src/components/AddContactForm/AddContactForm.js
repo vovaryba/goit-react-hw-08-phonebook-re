@@ -39,8 +39,12 @@ const AddContactForm = () => {
 
   return (
     <>
-      <form onSubmit={handleSubmit(onSubmitForm)} autoComplete="off">
-        <label>
+      <form
+        onSubmit={handleSubmit(onSubmitForm)}
+        className={s.form}
+        autoComplete="off"
+      >
+        <label className={s.label}>
           Name
           <input
             className={s.input}
@@ -58,7 +62,7 @@ const AddContactForm = () => {
           />
         </label>
         {errors.name && <p className={s.error}>{errors.name.message}</p>}
-        <label>
+        <label className={s.label}>
           Number
           <input
             className={s.input}
