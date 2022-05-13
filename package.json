@@ -1,8 +1,7 @@
 {
-  "name": "goit-react-hw-08-phonebook-re",
+  "name": "vr-phonebook",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://vovaryba.github.io/goit-react-hw-08-phonebook-re",
   "dependencies": {
     "@emotion/react": "^11.9.0",
     "@emotion/styled": "^11.8.1",
@@ -35,7 +34,8 @@
     "eject": "react-scripts eject",
     "lint:js": "eslint src/**/*.{js,jsx}",
     "predeploy": "npm run build",
-    "deploy": "gh-pages -d build",
+    "deploygh": "gh-pages -d build",
+    "deploy": "netlify deploy -p",
     "backend": "json-server --watch db.json --port 3004"
   },
   "eslintConfig": {
