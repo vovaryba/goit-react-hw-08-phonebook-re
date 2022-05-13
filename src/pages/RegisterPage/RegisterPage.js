@@ -1,6 +1,6 @@
 import { useForm } from 'react-hook-form';
 import { useDispatch } from 'react-redux';
-import * as authOperations from 'redux/auth/authOperations';
+import { authOperations } from 'redux/auth';
 import s from './RegisterPage.module.css';
 
 const RegisterPage = () => {

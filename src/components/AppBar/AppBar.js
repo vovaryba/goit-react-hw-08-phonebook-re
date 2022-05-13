@@ -3,7 +3,7 @@ import { Outlet } from 'react-router-dom';
 import AuthNav from 'components/AuthNav';
 import Navigation from 'components/Navigation';
 import UserMenu from 'components/UserMenu';
-import * as authSelectors from 'redux/auth/authSelectors';
+import { authSelectors } from 'redux/auth';
 import s from './AppBar.module.css';
 
 const AppBar = () => {

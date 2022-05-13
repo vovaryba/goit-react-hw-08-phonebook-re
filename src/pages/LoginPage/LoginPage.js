@@ -1,15 +1,10 @@
 import { useForm } from 'react-hook-form';
-// import { useLocation, useNavigate } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
-import * as authOperations from 'redux/auth/authOperations';
+import { authOperations } from 'redux/auth';
 import s from './LoginPage.module.css';
 
 const LoginPage = () => {
-  //   const navigate = useNavigate();
-  //   const location = useLocation();
   const dispatch = useDispatch();
-
-  //   const fromPage = location.state?.from?.pathname ?? '/';
 
   const {
     register,
@@ -27,7 +22,6 @@ const LoginPage = () => {
   const onSubmitForm = ({ email, password }) => {
     dispatch(authOperations.logIn({ email, password }));
     reset();
-    //  navigate('/contacts', { replace: true });
   };
 
   return (

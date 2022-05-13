@@ -4,8 +4,7 @@ import { Route, Routes } from 'react-router-dom';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import AppBar from 'components/AppBar';
-import * as authOperations from 'redux/auth/authOperations';
-import * as authSelectors from 'redux/auth/authSelectors';
+import { authOperations, authSelectors } from 'redux/auth';
 import PrivateRoute from 'components/PrivatRoute.js';
 import PublicRoute from 'components/PublicRoute.js';
 
@@ -34,7 +33,6 @@ const NotFoundPage = lazy(() =>
 const App = () => {
   const dispatch = useDispatch();
   const isRefreshing = useSelector(authSelectors.getIsRefreshing);
-  console.log(isRefreshing);
 
   useEffect(() => {
     dispatch(authOperations.refreshUser());

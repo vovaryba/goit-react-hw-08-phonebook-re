@@ -18,7 +18,7 @@ const List = () => {
 
   return (
     <>
-      {/* {error && <h2>{error}</h2>} */}
+      {error && <h2>{error}</h2>}
       {isLoading && <h2>Loading...</h2>}
       {contacts.length > 0 && !isLoading && (
         <ul>

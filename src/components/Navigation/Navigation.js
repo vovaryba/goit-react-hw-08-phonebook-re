@@ -1,6 +1,6 @@
 import { NavLink } from 'react-router-dom';
 import { useSelector } from 'react-redux';
-import * as authSelectors from 'redux/auth/authSelectors';
+import { authSelectors } from 'redux/auth';
 import s from './Navigation.module.css';
 
 const setActive = ({ isActive }) => (isActive ? s.activated : s.link);

@@ -1,18 +1,12 @@
-import { useLocation, Navigate } from 'react-router-dom';
+import { Navigate } from 'react-router-dom';
 import { useSelector } from 'react-redux';
-import * as authSelectors from 'redux/auth/authSelectors';
+import { authSelectors } from 'redux/auth';
 
 function PublicRoute({ children, redirectTo = '/' }) {
-  //   const location = useLocation();
   const isLoggedIn = useSelector(authSelectors.getIsLoggedIn);
 
   if (isLoggedIn) {
-    return (
-      <Navigate
-        to={redirectTo}
-        //   state={{ from: location }}
-      />
-    );
+    return <Navigate to={redirectTo} />;
   }
 
   return children;
