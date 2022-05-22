@@ -1,14 +1,16 @@
 .appBar {
+  /* height: 10vh; */
   display: flex;
   justify-content: space-between;
   border-bottom: 1px solid #000000;
 }
 
 .container {
-  width: 1200px;
-  margin-top: 20px;
+  /* width: 1200px; */
+  /* margin-top: 20px; */
+  /* height: 100vh; */
   margin-left: auto;
   margin-right: auto;
-  padding-top: 10px;
+  /* padding-top: 10px; */
   text-align: center;
 }
