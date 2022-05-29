@@ -5,6 +5,7 @@
 }
 .link {
   padding: 12px;
+  font-size: 18px;
   font-weight: 600;
   color: #000000;
   margin-right: 10px;
@@ -14,5 +15,5 @@
 
 .activated {
   composes: link;
-  color: red;
+  color: #ffffff;
 }

@@ -93,7 +93,6 @@ const LoginPage = () => {
           fullWidth={true}
           disableElevation={true}
           sx={{ marginTop: 2 }}
-          onClick={() => dispatch(authOperations.logOut())}
         >
           Log in
         </Button>

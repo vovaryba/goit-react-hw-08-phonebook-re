@@ -1,9 +1,19 @@
 import { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
+import {
+  List,
+  ListItem,
+  ListItemText,
+  ListItemIcon,
+  Button,
+} from '@mui/material';
+import {
+  PersonOutlineOutlined,
+  DeleteOutlineOutlined,
+} from '@mui/icons-material';
 import { phonebookSelectors, phonebookOperations } from 'redux/phonebook';
-import s from './List.module.css';
 
-const List = () => {
+const ContactsList = () => {
   const contacts = useSelector(phonebookSelectors.getFilteredContacts);
   const isLoading = useSelector(phonebookSelectors.getIsLoading);
   const error = useSelector(phonebookSelectors.getError);
@@ -21,22 +31,28 @@ const List = () => {
       {error && <h2>{error}</h2>}
       {isLoading && <h2>Loading...</h2>}
       {contacts.length > 0 && !isLoading && (
-        <ul>
+        <List>
           {contacts.map(contact => (
-            <li key={contact.id}>
-              {contact.name}: {contact.number}
-              <button
-                className={s.button}
+            <ListItem key={contact.id} sx={{ padding: 0 }}>
+              <ListItemIcon sx={{ minWidth: 0, marginRight: 1 }}>
+                <PersonOutlineOutlined />
+              </ListItemIcon>
+              <ListItemText primary={contact.name} secondary={contact.number} />
+              <Button
+                color="error"
+                variant="text"
+                type="button"
+                startIcon={<DeleteOutlineOutlined />}
                 onClick={() => onDeleteContact(contact.id)}
               >
                 Delete
-              </button>
-            </li>
+              </Button>
+            </ListItem>
           ))}
-        </ul>
+        </List>
       )}
     </>
   );
 };
 
-export default List;
+export default ContactsList;

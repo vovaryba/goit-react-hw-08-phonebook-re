@@ -1,9 +1,8 @@
 .page {
   width: 50vw;
-  height: 91.5vh;
+  height: calc(100vh - 64px);
   margin-left: auto;
   margin-right: auto;
-  background-color: #fff;
   padding: 20px;
   display: flex;
   flex-direction: column;

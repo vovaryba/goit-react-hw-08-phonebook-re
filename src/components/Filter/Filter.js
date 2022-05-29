@@ -1,6 +1,7 @@
 import { useSelector, useDispatch } from 'react-redux';
+import { TextField, InputAdornment } from '@mui/material';
+import { SearchOutlined } from '@mui/icons-material';
 import { phonebookActions, phonebookSelectors } from 'redux/phonebook';
-import s from './Filter.module.css';
 
 const Filter = () => {
   const value = useSelector(phonebookSelectors.getFilter);
@@ -9,16 +10,23 @@ const Filter = () => {
   const onChange = e => dispatch(phonebookActions.changeFilter(e.target.value));
 
   return (
-    <div className={s.container}>
-      <label className={s.label}>
-        Find contacts by name
-        <input
-          className={s.input}
-          type="text"
-          value={value}
-          onChange={onChange}
-        ></input>
-      </label>
+    <div>
+      <TextField
+        value={value}
+        onChange={onChange}
+        type="text"
+        name="name"
+        label="Find contacts by name"
+        InputProps={{
+          startAdornment: (
+            <InputAdornment position="start">
+              <SearchOutlined />
+            </InputAdornment>
+          ),
+        }}
+        variant="standard"
+        fullWidth
+      />
     </div>
   );
 };

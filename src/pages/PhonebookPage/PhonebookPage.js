@@ -1,17 +1,28 @@
+import { Typography, Box } from '@mui/material';
 import AddContactForm from 'components/AddContactForm';
 import Filter from 'components/Filter';
 import List from 'components/List';
-import s from './PhonebookPage.module.css';
 
 const PhonebookPage = () => {
   return (
     <>
-      <h2 className={s.title}>Phonebook</h2>
       <AddContactForm />
 
-      <h2 className={s.title}>Contacts</h2>
-      <Filter />
-      <List />
+      <Typography variant="h3" component="div" gutterBottom>
+        Contacts
+      </Typography>
+      <Box
+        sx={{
+          '& > :not(style)': { marginTop: 2 },
+          width: 360,
+          textAlign: 'center',
+          marginLeft: 'auto',
+          marginRight: 'auto',
+        }}
+      >
+        <Filter />
+        <List />
+      </Box>
     </>
   );
 };

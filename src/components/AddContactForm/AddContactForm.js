@@ -1,6 +1,7 @@
-import { useForm } from 'react-hook-form';
+import { useForm, Controller } from 'react-hook-form';
 import { useSelector, useDispatch } from 'react-redux';
 import { toast } from 'react-toastify';
+import { Typography, TextField, Button } from '@mui/material';
 import { phonebookSelectors, phonebookOperations } from 'redux/phonebook';
 import s from './AddContactForm.module.css';
 
@@ -9,8 +10,8 @@ const AddContactForm = () => {
   const dispatch = useDispatch();
 
   const {
-    register,
     handleSubmit,
+    control,
     reset,
     formState: { errors },
   } = useForm({
@@ -33,58 +34,84 @@ const AddContactForm = () => {
     }
 
     dispatch(phonebookOperations.addContact({ name, number }));
-
     reset();
   };
 
   return (
-    <>
+    <div className={s.page}>
+      <Typography variant="h3" component="div" gutterBottom>
+        Phonebook
+      </Typography>
       <form
         onSubmit={handleSubmit(onSubmitForm)}
         className={s.form}
         autoComplete="off"
       >
-        <label className={s.label}>
-          Name
-          <input
-            className={s.input}
-            type="text"
-            name="name"
-            {...register('name', {
-              required: { value: true, message: 'Required' },
-              pattern: {
-                value:
-                  /^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$/,
-                message:
-                  'Name may contain only letters, apostrophe, dash and spaces',
-              },
-            })}
-          />
-        </label>
-        {errors.name && <p className={s.error}>{errors.name.message}</p>}
-        <label className={s.label}>
-          Number
-          <input
-            className={s.input}
-            type="tel"
-            name="number"
-            {...register('number', {
-              required: { value: true, message: 'Required' },
-              pattern: {
-                value:
-                  /\+?\d{1,4}?[-.\s]?\(?\d{1,3}?\)?[-.\s]?\d{1,4}[-.\s]?\d{1,4}[-.\s]?\d{1,9}/,
-                message:
-                  'Phone number must be digits and can contain spaces, dashes, parentheses and can start with +',
-              },
-            })}
-          />
-        </label>
-        {errors.number && <p className={s.error}>{errors.number.message}</p>}
-        <button type="submit" className={s.button}>
+        <Controller
+          control={control}
+          name="name"
+          rules={{
+            required: { value: true, message: 'Required' },
+            pattern: {
+              value:
+                /^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$/,
+              message:
+                'Name may contain only letters, apostrophe, dash and spaces',
+            },
+          }}
+          render={({ field }) => (
+            <TextField
+              margin="dense"
+              label="Name"
+              type="text"
+              name="name"
+              fullWidth={true}
+              value={field.value}
+              onChange={e => field.onChange(e)}
+              error={!!errors.name?.message}
+              helperText={errors.name?.message}
+            />
+          )}
+        />
+        <Controller
+          control={control}
+          name="number"
+          rules={{
+            required: { value: true, message: 'Required' },
+            pattern: {
+              value:
+                /\+?\d{1,4}?[-.\s]?\(?\d{1,3}?\)?[-.\s]?\d{1,4}[-.\s]?\d{1,4}[-.\s]?\d{1,9}/,
+              message:
+                'Phone number must be digits and can contain spaces, dashes, parentheses and can start with +',
+            },
+          }}
+          render={({ field }) => (
+            <TextField
+              margin="dense"
+              label="Number"
+              type="tel"
+              name="number"
+              fullWidth={true}
+              value={field.value}
+              onChange={e => field.onChange(e)}
+              error={!!errors.number?.message}
+              helperText={errors.number?.message}
+            />
+          )}
+        />
+
+        <Button
+          color="primary"
+          variant="contained"
+          type="submit"
+          fullWidth={true}
+          disableElevation={true}
+          sx={{ marginTop: 2 }}
+        >
           Add contact
-        </button>
+        </Button>
       </form>
-    </>
+    </div>
   );
 };
 
